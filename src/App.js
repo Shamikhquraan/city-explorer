@@ -1,6 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
 class App extends React.Component {
 
@@ -44,12 +48,13 @@ class App extends React.Component {
             <button>Explore!</button>
 
           </form>
-          
+          <div>
           {this.state.showData && <p>({this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
           }
 
-         
+         </div>
 
+        
         </>
       
     )
