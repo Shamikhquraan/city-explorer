@@ -52,6 +52,13 @@ class App extends React.Component {
           {this.state.showData && <p>({this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
           }
 
+<div className="img">
+{this.state.showData && (
+
+<Image src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_CITY_KEY}&center=${this.state.cityData.lat},${this.state.cityData.lon}&zoom=11`}  /> 
+)}
+
+</div>
          </div>
 
         
