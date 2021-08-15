@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import './App.css';
 
 class App extends React.Component {
@@ -26,7 +25,6 @@ class App extends React.Component {
 
     let resultData = await axios.get(locURL);
 
-    console.log('ssssssssssss', resultData.data[0]);
 
     this.setState({
       cityData: resultData.data[0],
@@ -38,26 +36,24 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+     
         <>
           <h2>City Explorer</h2>
           <form onSubmit={this.getLocation}>
             <input type='text' placeholder='Enter city' name='city' />
-            <button>submit</button>
+            <button>Explore!</button>
 
           </form>
           
           {this.state.showData &&
-            <p>{this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} </p>
+            <p>({this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
           }
 
          
 
         </>
-      </div>
+      
     )
   }
 }
-
-
 export default App;
