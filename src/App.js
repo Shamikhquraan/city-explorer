@@ -45,8 +45,7 @@ class App extends React.Component {
 
           </form>
           
-          {this.state.showData &&
-            <p>({this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
+          {this.state.showData && <p>({this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
           }
 
          
