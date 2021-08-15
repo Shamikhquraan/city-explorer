@@ -44,12 +44,13 @@ class App extends React.Component {
           <form onSubmit={this.getLocation}>
             <input type='text' placeholder='Enter city' name='city' />
             <button>submit</button>
-          </form>
-
-          {this.state.showData &&
+            {this.state.showData &&
             <p>{this.state.searchCity} Lat:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} </p>
           }
 
+          </form>
+
+         
 
         </>
       </div>
