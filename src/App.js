@@ -30,7 +30,7 @@ class App extends React.Component {
     let resultData = await axios.get(locURL);
 
 
-    this.setState({
+     await this.setState({
       cityData: resultData.data[0],
       showData: true
     })
