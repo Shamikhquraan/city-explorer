@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       cityData: {},
       searchCity: '',
-      showData: false
+      showData: false,
     }
   }
 
