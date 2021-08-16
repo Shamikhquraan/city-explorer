@@ -1,3 +1,22 @@
+Author: shamikh Quraan Version: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+Overview
+Getting Started
+Architecture
+Change Log
+Credit and Collaborations
+Name of feature: ApI
+Estimate of time needed to complete: 3 hour
+
+Start time: 3am
+
+Finish time: 6am
+
+Actual time needed to complete: 3
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
