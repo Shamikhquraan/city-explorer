@@ -57,12 +57,14 @@ class App extends React.Component {
 
 alert('API sending something wrong');
 console.log('API sending something wrong',error);
+this.setState({
+  cityDataBack: resultDataBack.data,
+  showData: true
+})
 
   }
 
   }
-
-
 
 
   render() {
