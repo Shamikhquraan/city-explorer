@@ -43,7 +43,7 @@ class App extends React.Component {
 
     try{
     // http://localhost:3000/undefined/getDataFromWeth?cityName=amman
-    let bacURL= await `http://localhost:3700/getDataFromWeth?cityName=${this.state.searchCity}`
+    let bacURL= await `${process.env.REACT_APP_SERVER_LINK}/getDataFromWeth?cityName=${this.state.searchCity}`
     let resultDataBack = await axios.get(bacURL);
 
     
