@@ -3,7 +3,6 @@ import axios from 'axios';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 class App extends React.Component {
@@ -12,8 +11,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       cityData: {},
+      cityDataBack:{},
       searchCity: '',
       showData: false,
+      objCity:{}
     }
   }
 
@@ -21,12 +22,17 @@ class App extends React.Component {
     console.log('inside get location function')
     e.preventDefault();
 
+
+
+
+
     await this.setState({
       searchCity: e.target.city.value
     })
 
-    let locURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchCity}&format=json`;
+   
 
+    let locURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchCity}&format=json`;
     let resultData = await axios.get(locURL);
 
 
@@ -34,9 +40,23 @@ class App extends React.Component {
       cityData: resultData.data[0],
       showData: true
     })
+    // http://localhost:3000/undefined/getDataFromWeth?cityName=amman
+    let bacURL= await `http://localhost:3700/getDataFromWeth?cityName=${this.state.searchCity}`
+    let resultDataBack = await axios.get(bacURL);
+
+    
+
+    await this.setState({
+      cityDataBack: resultDataBack.data,
+      showData: true
+    })
+
 
 
   }
+
+
+
 
   render() {
     return (
@@ -47,11 +67,11 @@ class App extends React.Component {
     <Form.Label>City Explore ✔ </Form.Label>
     <Form.Control type="text" name="city" placeholder="Type here ...." />
   </Form.Group>
-  <button type="submit" class="btn btn-primary">Explore!</button>
+  <button type="submit">Explore!</button>
 </Form>
 
           <div>
-          {this.state.showData && <p>({this.state.searchCity} Latt:{this.state.cityData.lat} /Lon:{this.state.cityData.lon} )</p>
+          {this.state.showData && <p>({this.state.searchCity} Latt:{this.state.cityDataBack.lat} /Lon:{this.state.cityDataBack.lon} )</p>
           }
 
          </div>
