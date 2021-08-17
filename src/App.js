@@ -40,6 +40,8 @@ class App extends React.Component {
       cityData: resultData.data[0],
       showData: true
     })
+
+    try{
     // http://localhost:3000/undefined/getDataFromWeth?cityName=amman
     let bacURL= await `http://localhost:3700/getDataFromWeth?cityName=${this.state.searchCity}`
     let resultDataBack = await axios.get(bacURL);
@@ -51,7 +53,12 @@ class App extends React.Component {
       showData: true
     })
 
+  }catch(error){
 
+alert('API sending something wrong');
+console.log('API sending something wrong',error);
+
+  }
 
   }
 
@@ -71,9 +78,9 @@ class App extends React.Component {
 </Form>
 
           <div>
-          {this.state.showData && <p>({this.state.searchCity} Latt:{this.state.cityDataBack.lat} /Lon:{this.state.cityDataBack.lon} )</p>
+          {this.state.showData && <p>({this.state.searchCity} : Latt:{this.state.cityDataBack.lat} .... Lon:{this.state.cityDataBack.lon}
+          .... timezone: {this.state.cityDataBack.timezone})</p>
           }
-
          </div>
          <div className="imgAPI">
 {this.state.showData && (
