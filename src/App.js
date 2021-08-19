@@ -4,6 +4,9 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Weather from './Weather';
+
+import { wait } from '@testing-library/react';
 
 class App extends React.Component {
 
@@ -14,7 +17,9 @@ class App extends React.Component {
       cityDataBack:{},
       searchCity: '',
       showData: false,
-      objCity:{}
+      objCity:{},
+      dateVA:'',
+      desX:''
     }
   }
 
@@ -36,14 +41,15 @@ class App extends React.Component {
     try{
     
 
-      let bacURL=`${process.env.REACT_APP_SERVER_LINK}/Weather?searchQuery=${this.state.searchCity}`;
-      let resultDataBack = await axios.get(bacURL);
+      let bacURL=await  `${process.env.REACT_APP_SERVER_LINK}/Weather?searchQuery=${this.state.searchCity}`;
+        let resultDataBack = await axios.get(bacURL);
      
       await this.setState({
-        cityDataBack: resultDataBack.data,
+        cityDataBack: resultDataBack.data[0],
         
         showData: true
       })
+      
 
   }catch(error){
 
@@ -51,6 +57,10 @@ alert('API sending something wrong');
 console.log('API sending something wrong',error);
 
   }
+
+  //https://api.weatherbit.io/v2.0/forecast/daily?city={searchQuery}&key={REACT_APP_SERVER_KEY}
+
+
 
   }
 
@@ -68,8 +78,9 @@ console.log('API sending something wrong',error);
 </Form>
 
           <div>
-          {this.state.showData && <p>({this.state.searchCity} : Latt:{this.state.cityDataBack.lat} .... Lon:{this.state.cityDataBack.lon}
-          .... timezone: {this.state.cityDataBack.timezone})</p>
+
+          {this.state.showData &&<Weather  name={this.state.searchCity} Lat={this.state.cityData.lat} 
+          Lon={this.state.cityData.lon} date={this.state.cityDataBack.date}  description={this.state.cityDataBack.description}/> 
           }
          </div>
          <div className="imgAPI">
