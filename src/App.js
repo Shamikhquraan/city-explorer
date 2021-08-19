@@ -22,36 +22,28 @@ class App extends React.Component {
     console.log('inside get location function')
     e.preventDefault();
 
-
-
-
-
     await this.setState({
       searchCity: e.target.city.value
     })
-
-   
-
     let locURL = `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${this.state.searchCity}&format=json`;
     let resultData = await axios.get(locURL);
-
-
-     await this.setState({
+    await this.setState({
       cityData: resultData.data[0],
+      
       showData: true
     })
 
     try{
-    // http://localhost:3000/undefined/getDataFromWeth?cityName=amman
-    let bacURL= await `${process.env.REACT_APP_SERVER_LINK}/getDataFromWeth?cityName=${this.state.searchCity}`
-    let resultDataBack = await axios.get(bacURL);
-
     
 
-    await this.setState({
-      cityDataBack: resultDataBack.data,
-      showData: true
-    })
+      let bacURL=`${process.env.REACT_APP_SERVER_LINK}/Weather?searchQuery=${this.state.searchCity}`;
+      let resultDataBack = await axios.get(bacURL);
+     
+      await this.setState({
+        cityDataBack: resultDataBack.data,
+        
+        showData: true
+      })
 
   }catch(error){
 
