@@ -31,6 +31,7 @@ align-content: center;
 .imgClass{
 border: 3px glad black;
 border-radius: 5px;
+margin-bottom: 10%;
 /* margin-left: 10%; */
 }
 
@@ -46,9 +47,14 @@ box-shadow: 0px 2px 10px red;
   margin-bottom: 50%;
 padding: 3%;  
 }
+.tab2 {
 
-
-
-
-
-
+  /* border: tomato solid; */
+  margin: 0rem auto;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: brown;
+  padding-bottom: 5%;
+  }
