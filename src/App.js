@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   getLocation = async (e) => {
-    console.log("inside get location function");
+    console.log("inside get locatiosn function");
     e.preventDefault();
 
     await this.setState({
